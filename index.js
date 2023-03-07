@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const configuration = new Configuration({
   organization: "org-CNlDe3aMw8haJQb2SqI1N8uK",
-  apiKey: "PUT_KEY_HERE",
+  apiKey: "put your api key here",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -60,7 +60,7 @@ app.post("/search", async (req, res) => {
   // return success response
   res.json({
     status: 200,
-    data: "Your request has been sent, we will get back to you shortly" + txt.split(" ").slice(0, 6).join(" ")
+    data: "Your request has been sent, we will get back to you shortly,\n----------------\n" + txt.split(" ").slice(0, 6).join(" ") + "..."
   });
 });
 
