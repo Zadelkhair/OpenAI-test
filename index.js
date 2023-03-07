@@ -1,11 +1,10 @@
-// import { Configuration, OpenAIApi } from "openai";
 const { Configuration, OpenAIApi } = require("openai");
 const express = require("express");
 const fs = require("fs");
 
 const configuration = new Configuration({
   organization: "org-CNlDe3aMw8haJQb2SqI1N8uK",
-  apiKey: "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",
+  apiKey: "PUT_KEY_HERE",
 });
 
 const openai = new OpenAIApi(configuration);
@@ -20,6 +19,8 @@ const port = 3080;
 app.post("/search", async (req, res) => {
   // get the search
   const { search, model } = req.body;
+
+  
 
   const response = await openai.createCompletion({
     model: model ?? "text-davinci-003", // the model
@@ -42,6 +43,7 @@ app.post("/search", async (req, res) => {
     // file is empty
   }
 
+  let txt = response.data.choices[0].text;
   // write the db
   fs.writeFileSync(
     "./db.json",
@@ -49,7 +51,7 @@ app.post("/search", async (req, res) => {
       ...db,
       [new Date().toISOString()]: {
         search: search,
-        response: response.data.choices[0].text,
+        response: txt,
         model: model ?? "text-davinci-003",
       },
     })
@@ -58,7 +60,7 @@ app.post("/search", async (req, res) => {
   // return success response
   res.json({
     status: 200,
-    data: "Your request has been sent, we will get back to you shortly",
+    data: "Your request has been sent, we will get back to you shortly" + txt.split(" ").slice(0, 6).join(" ")
   });
 });
 

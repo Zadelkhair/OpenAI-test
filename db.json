@@ -1,7 +1,22 @@
 {
-  "2023-03-07T19:05:44.036Z": {
-    "search": "Hello, how are you?",
+  "2023-03-07T19:36:21.846Z": {
+    "search": "Hi, can you help me create a blog?",
+    "response": "\n\nYes, I can help you create a blog! There are many different platforms you can use to create a blog, such as WordPress, Blogger, or Tumblr. All of these platforms have their own guides and tutorials to help you get started. You can also use online services like Squarespace or Wix to help you create and manage your blog.",
+    "model": "text-davinci-003"
+  },
+  "2023-03-07T21:27:46.087Z": {
+    "search": "Hi, how are you?",
     "response": "\n\nI'm doing well, thank you. How about you?",
+    "model": "text-davinci-003"
+  },
+  "2023-03-07T21:30:05.880Z": {
+    "search": "Can you help me create a website",
+    "response": "\n\nYes, we can help you create a website. Depending on your needs and budget, we can help you create a website using a variety of tools and platforms, such as WordPress, Wix, Squarespace, Shopify, and more. We can also help you with the design, development, and hosting of your website. If you need help getting started, please feel free to contact us.",
+    "model": "text-davinci-003"
+  },
+  "2023-03-07T21:30:25.829Z": {
+    "search": "My name is Abdelkoddous",
+    "response": "\n\nNice to meet you, Abdelkoddous!",
     "model": "text-davinci-003"
   }
 }
