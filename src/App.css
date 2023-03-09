@@ -1,5 +1,6 @@
 .app {
   min-height: 100vh;
+  background-color: #f5f5f5;
 }
 
 .app .header {
@@ -47,7 +48,6 @@
   align-items: center;
   justify-content: center;
   height: calc(100vh - 4rem);
-  background-color: #f5f5f5;
 }
 
 .search h1 {
@@ -97,4 +97,136 @@
 .search-container button:focus {
   outline: none;
 }
+
+/* 
+<div className="question-container">
+        <div className="question">
+          <h2>{questions[id - 1].question}</h2>
+        </div>
+        <div className="answer">
+          <textarea
+            name="answer"
+            id="answer"
+            cols="50"
+            rows="5"
+            placeholder="Enter your answer here"
+            value={questions[id - 1].answer}
+            onChange={(e) => {
+              const newQuestions = [...questions];
+              newQuestions[id - 1].answer = e.target.value;
+              setQuestions(newQuestions);
+            }}
+          ></textarea>
+        </div>
+
+        <div className="buttons">
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              if (id > 1) {
+                props.history.push(`/needs/${id - 1}`);
+              }
+            }}
+          >
+            Previous
+          </button>
+          <button
+            className="btn btn-primary"
+            onClick={() => {
+              if (id < 10) {
+                props.history.push(`/needs/${id + 1}`);
+              }
+            }}
+          >
+            Next
+          </button>
+        </div>
+      </div>
+*/
+
+/* styling the elems above to match the prev styles */
+
+.question-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.question-container .question {
+  width: 100%;
+  max-width: 50rem;
+  margin-bottom: 1rem;
+}
+
+.question-container .question h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.question-container .answer {
+  width: 100%;
+  max-width: 50rem;
+  margin-bottom: 1rem;
+}
+
+.question-container .answer textarea {
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  resize: none;
+}
+
+.question-container .buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 50rem;
+}
+
+.question-container .buttons button {
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  border: 1px solid black;
+  color: black;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.question-container .buttons button:first-child {
+  margin-left: 0;
+}
+
+.question-container .buttons button:last-child {
+  margin-right: 0;
+}
+
+/* the server answer div.out>p */
+.out {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 800px;
+  max-width: 90%;
+  height: 100vh;
+  overflow: hidden;
+  margin: auto;
+}
+
+.out p {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  white-space: pre-line;
+  overflow: hidden;
+}
+
+
 
