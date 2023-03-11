@@ -10,13 +10,17 @@
     "body-parser": "^1.20.2",
     "bootstrap": "^5.2.3",
     "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
     "express": "^4.18.2",
+    "mariadb": "^3.1.0",
     "morgan": "^1.10.0",
+    "mysql2": "^3.2.0",
     "openai": "^3.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.8.2",
     "react-scripts": "5.0.1",
+    "sequelize": "^6.29.3",
     "toaster-js": "^2.2.3",
     "toastify-js": "^1.12.0",
     "toastr": "^2.1.4",
@@ -26,7 +30,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "cmd": "node ./cmd.scripts.js"
   },
   "eslintConfig": {
     "extends": [

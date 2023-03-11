@@ -4,7 +4,7 @@ const fs = require("fs");
 
 const configuration = new Configuration({
   organization: "org-CNlDe3aMw8haJQb2SqI1N8uK",
-  apiKey: "__",
+  apiKey: "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",
 });
 
 const openai = new OpenAIApi(configuration);

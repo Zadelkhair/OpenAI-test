@@ -98,52 +98,6 @@
   outline: none;
 }
 
-/* 
-<div className="question-container">
-        <div className="question">
-          <h2>{questions[id - 1].question}</h2>
-        </div>
-        <div className="answer">
-          <textarea
-            name="answer"
-            id="answer"
-            cols="50"
-            rows="5"
-            placeholder="Enter your answer here"
-            value={questions[id - 1].answer}
-            onChange={(e) => {
-              const newQuestions = [...questions];
-              newQuestions[id - 1].answer = e.target.value;
-              setQuestions(newQuestions);
-            }}
-          ></textarea>
-        </div>
-
-        <div className="buttons">
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              if (id > 1) {
-                props.history.push(`/needs/${id - 1}`);
-              }
-            }}
-          >
-            Previous
-          </button>
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              if (id < 10) {
-                props.history.push(`/needs/${id + 1}`);
-              }
-            }}
-          >
-            Next
-          </button>
-        </div>
-      </div>
-*/
-
 /* styling the elems above to match the prev styles */
 
 .question-container {
@@ -228,5 +182,204 @@
   overflow: hidden;
 }
 
+/* the chat app */
 
+.chat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 4rem);
+}
 
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+}
+
+.chat-container .chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  border-bottom: 1px solid lightgray;
+}
+
+.chat-container .chat-header h1 {
+  font-size: 1.5rem;
+}
+
+.chat-container .chat-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: end;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  position: relative;
+}
+
+.chat-container .chat-body .chat-conversation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  height: 100%;
+  padding: 1rem;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+}
+
+.chat-container .chat-body .chat-conversation .chat-btn-scroll-to-bottom{
+  position: absolute;
+  bottom: 3rem;
+  right: 0;
+  margin: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid lightgray;
+  border-radius: 0.5rem;
+  background-color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  /* shadow */
+  box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.2);
+}
+
+/* scroll for the chat-conversation, i want the scroll to be scrolled to bottom on any change */
+.chat-container .chat-body .chat-conversation::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+.chat-container .chat-body .chat-conversation::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.chat-container .chat-body .chat-conversation::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+.chat-container .chat-body .chat-conversation::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.chat-container .chat-body .chat-conversation .chat-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0.5rem 0;
+}
+
+.chat-container .chat-body .chat-message .chat-message-container {
+  display: flex;
+  align-items: start;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.chat-container .chat-body .chat-message .chat-message-container .user-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 0.5rem;
+}
+
+.chat-container .chat-body .chat-message .chat-message-container .user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.chat-container .chat-body .chat-message .chat-message-container .chat-message-content {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  width: 100%;
+  height: 100%;
+  padding: 0.5rem;
+  border-radius: 0rem 0.2rem 0.2rem 0.2rem;
+  background-color: lightgray;
+  /* return to line */
+  word-wrap: break-word;
+  /* allow wrap in flex */
+  flex-wrap: wrap;
+}
+
+.chat-container .chat-body .chat-message .chat-message-container .chat-message-content p {
+  font-size: 1rem;
+  margin-bottom: 0;
+}
+
+.chat-container .chat-body .chat-message.sender-user .chat-message-container .chat-message-content {
+  background-color: #eaeaea;
+}
+
+.chat-container .chat-body .chat-message.receiver-user .chat-message-container .chat-message-content {
+  background-color: #eaeaea;
+  /* allow text wrap */
+  word-wrap: break-word;
+  /* allow wrap in flex */
+  flex-wrap: wrap;
+  /* shrink */
+  flex-shrink: 1;
+  height: auto;
+}
+
+.chat-container .chat-body .chat-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 3rem;
+  border-top: 1px solid lightgray;
+}
+
+.chat-container .chat-body .chat-form .chat-form-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.chat-container .chat-body .chat-form .chat-form-container .chat-form-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.chat-container .chat-body .chat-form .chat-form-container .chat-form-content input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(241, 241, 241);
+  outline: none;
+  padding: 0 0.5rem;
+}
+
+.chat-container .chat-body .chat-form .chat-form-container .chat-form-content button {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  background-color: #e6e6ff;
+  outline: none;
+}
+
+.chat-container .chat-body .chat-form .chat-form-container .chat-form-content button:hover {
+  background-color: #ebebeb;
+}
