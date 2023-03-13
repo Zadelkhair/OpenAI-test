@@ -14,6 +14,7 @@
     "express": "^4.18.2",
     "mariadb": "^3.1.0",
     "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
     "mysql2": "^3.2.0",
     "openai": "^3.2.1",
     "react": "^18.2.0",
@@ -31,7 +32,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "cmd": "node ./cmd.scripts.js"
+    "cmd": "node ./cmd.scripts.js",
+    "server": "nodemon server.js"
   },
   "eslintConfig": {
     "extends": [

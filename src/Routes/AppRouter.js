@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import Chat from "../components/ChatComponent";
 import Home from "../components/HomeComponent";
 import Out from "../components/OutComponent";
+import SigninComponent from "../components/SigninComponent";
 import NeedsRouter from "./NeedsRouter";
 
 export default function AppRouter() {
@@ -14,6 +15,7 @@ export default function AppRouter() {
       <Route path="needs/*" element={<NeedsRouter />} />
       <Route path="chat" element={<Chat/>} />
       <Route path="out" element={<Out />} />
+      <Route path="signin" element={<SigninComponent />} /> 
       <Route path="*" element={<h1>Not found</h1>} />
     </Routes>
   );

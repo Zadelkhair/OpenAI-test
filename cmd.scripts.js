@@ -63,6 +63,7 @@ if (main_arg === "migration") {
   }
 
   function run_migration(args) {
+    
     // the second argument is the name of the migration & is required
     let migration_name = args.shift();
 
@@ -81,14 +82,12 @@ if (main_arg === "migration") {
     let migration_file = `./migrations/${migration_name}.sql`;
 
     // check if the migration file exists
-
     if (!fs.existsSync(migration_file)) {
       console.log("Migration file does not exist");
       process.exit(1);
     }
 
     // read the migration file
-
     let migration_sql = fs.readFileSync(migration_file, "utf8");
 
     const sequelize = new Sequelize("openai_api", "root", "", {
@@ -97,7 +96,6 @@ if (main_arg === "migration") {
     });
 
     // run the migration
-
     sequelize
       .query(migration_sql)
       .then((data) => {
@@ -107,5 +105,6 @@ if (main_arg === "migration") {
         console.log(err);
         process.exit(1);
       });
+
   }
 }

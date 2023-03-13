@@ -1,3 +1,4 @@
+require('dotenv').config();
 const { Configuration, OpenAIApi } = require("openai");
 const express = require("express");
 const fs = require("fs");
@@ -75,6 +76,9 @@ const questions = [
     answer: "",
   },
 ];
+
+// require routes
+require("./routes/routes")(app);
 
 app.post("/search", async (req, res) => {
   // get the query
