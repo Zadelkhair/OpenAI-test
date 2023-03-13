@@ -1,5 +1,7 @@
 let fs = require("fs");
-const { Sequelize } = require("sequelize");
+require("dotenv").config();
+const Database = require("./database/database");
+const db = new Database();
 
 // get the params from the cmd line
 var args = process.argv.slice(2);
@@ -13,6 +15,7 @@ if (args.length === 0) {
 let main_arg = args.shift();
 
 if (main_arg === "migration") {
+
   // get the type of migration
   let migration_type = args.shift();
 
@@ -63,7 +66,7 @@ if (main_arg === "migration") {
   }
 
   function run_migration(args) {
-    
+
     // the second argument is the name of the migration & is required
     let migration_name = args.shift();
 
@@ -79,7 +82,7 @@ if (main_arg === "migration") {
     }
 
     // get the migration file
-    let migration_file = `./migrations/${migration_name}.sql`;
+    let migration_file = `./database/migrations/${migration_name}.sql`;
 
     // check if the migration file exists
     if (!fs.existsSync(migration_file)) {
@@ -89,17 +92,15 @@ if (main_arg === "migration") {
 
     // read the migration file
     let migration_sql = fs.readFileSync(migration_file, "utf8");
-
-    const sequelize = new Sequelize("openai_api", "root", "", {
-      host: "localhost",
-      dialect: "mysql",
-    });
+    // remove all comments from the migration (/* */, --, lines who start with #)
+    migration_sql = migration_sql.replace(/\/\*[\s\S]*?\*\/|--.*|^\s*#.*$/gm, "");
+    // clean the migration file to be executed
+    migration_sql = migration_sql.replace(/(\r\n|\n|\r)/gm, " ");
 
     // run the migration
-    sequelize
-      .query(migration_sql)
-      .then((data) => {
-        console.log("Migration ran successfully");
+    db.migrate(migration_sql,migration_file)
+      .then((res) => {
+        console.log("Migration ran successfully",migration_sql,res);
       })
       .catch((err) => {
         console.log(err);
@@ -107,4 +108,5 @@ if (main_arg === "migration") {
       });
 
   }
+
 }

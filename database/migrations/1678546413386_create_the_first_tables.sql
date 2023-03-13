@@ -1,6 +1,14 @@
 # my sql
 # all ids are auto increment
 
+# create migrations table
+create table migrations (
+    id int not null auto_increment,
+    name varchar(255) not null,
+    created_at timestamp not null default current_timestamp,
+    primary key (id)
+);
+
 # create roles table
 create table roles (
     id int not null auto_increment,

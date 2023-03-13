@@ -8,6 +8,7 @@ const connection = mysql.createConnection({
 });
 
 class Database {
+
   // test connection
   testConnection() {
     return new Promise((resolve, reject) => {
@@ -78,6 +79,27 @@ class Database {
       // close connection
     });
   }
+
+  // migrate
+  migrate(sql, name) {
+    console.log('migrating...');
+    return new Promise((resolve, reject) => {
+      this.queryUpdate(sql)
+        .then((response) => {
+          // insert migration
+          // let insert_sql = "insert into migrations (name) values (?)";
+          // let insert_args = [name];
+
+          // this.queryUpdate(insert_sql, insert_args).then((response) => {
+            resolve(response);
+          // });
+        })
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+
 }
 
 module.exports = Database;
