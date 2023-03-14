@@ -1,10 +1,8 @@
 const TestController = require('../app/controllers/TestController');
+const ComingSoonController = require('../app/controllers/ComingSoonController');
 
 // routes
 function Routes(app) {
-
-    // import the controllers
-
     // test connection
     app.get('/test', TestController.testConnection);
 
@@ -17,7 +15,8 @@ function Routes(app) {
     // select all tables and columns
     app.get('/test/tables-and-columns', TestController.selectAllTablesAndColumns);
 
-    
+    // comingsoon
+    app.post('/comingsoon', ComingSoonController.comingSoon);
 }
 
 // export routes

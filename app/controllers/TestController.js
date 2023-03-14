@@ -4,6 +4,7 @@ const database = new Database();
 const responseBuilder = require("./responseBuilder");
 
 class TestController {
+  
   // static methods
   static async testConnection(req, res) {
     // test connection
@@ -96,6 +97,7 @@ class TestController {
         res.json(responseBuilder.error(error));
       });
   }
+
 }
 
 module.exports = TestController;
